@@ -31,13 +31,37 @@ class EuclideanAlgorithm:
         return a
 
 
-# Example usage
+def get_valid_input(prompt):
+    """
+    Prompts the user for input and validates that it is a positive integer.
+
+    Parameters:
+    prompt (str): The prompt message to display to the user.
+
+    Returns:
+    int: A valid positive integer input from the user.
+    """
+    while True:
+        try:
+            value = int(input(prompt))
+            if value <= 0:
+                raise ValueError
+            return value
+        except ValueError:
+            print("Invalid input. Please enter a positive integer.")
+
+
 if __name__ == "__main__":
-    # Initialize with two integers
-    euclidean_algo = EuclideanAlgorithm(66, 8)
+    # Get valid inputs from the user
+    a = get_valid_input("Enter the first positive integer: ")
+    b = get_valid_input("Enter the second positive integer: ")
+
+    # Initialize the EuclideanAlgorithm class with the inputs
+    euclidean_algo = EuclideanAlgorithm(a, b)
 
     # Compute the GCD
     gcd = euclidean_algo.compute_gcd()
 
     # Print the result
-    print(f"The GCD of 48 and 18 is: {gcd}")
+    print(f"The GCD of {a} and {b} is: {gcd}")
+
